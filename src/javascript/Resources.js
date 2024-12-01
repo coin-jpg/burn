@@ -38,9 +38,13 @@ export default class Resources extends EventEmitter
             { name: 'introInstructionsArrows', source: './models/intro/instructions/arrows.png', type: 'texture' },
             { name: 'introInstructionsControls', source: './models/intro/instructions/controls.png', type: 'texture' },
             { name: 'introInstructionsOther', source: './models/intro/instructions/other.png', type: 'texture' },
+            { name: 'myCustomTextTexture', source: './models/intro/instructions/address.png', type: 'texture' },
 
             { name: 'introArrowKeyBase', source: './models/intro/arrowKey/base.glb' },
             { name: 'introArrowKeyCollision', source: './models/intro/arrowKey/collision.glb' },
+
+            { name: 'introABase', source: './models/intro/a/base.glb',},
+            { name: 'introACollision', source: './models/intro/a/collision.glb',},
 
             { name: 'introBBase', source: './models/intro/b/base.glb' },
             { name: 'introBCollision', source: './models/intro/b/collision.glb' },
@@ -127,10 +131,10 @@ export default class Resources extends EventEmitter
             { name: 'informationBaguetteBase', source: './models/information/baguette/base.glb' },
             { name: 'informationBaguetteCollision', source: './models/information/baguette/collision.glb' },
 
-            { name: 'informationContactTwitterLabel', source: './models/information/static/contactTwitterLabel.png', type: 'texture' },
+            { name: 'informationContactTwitterLabel', source: './models/information/static/Twitter.png', type: 'texture' },
             { name: 'informationContactGithubLabel', source: './models/information/static/contactGithubLabel.png', type: 'texture' },
             { name: 'informationContactLinkedinLabel', source: './models/information/static/contactLinkedinLabel.png', type: 'texture' },
-            { name: 'informationContactMailLabel', source: './models/information/static/contactMailLabel.png', type: 'texture' },
+            { name: 'informationContactMailLabel', source: './models/information/static/Telegram.png', type: 'texture' },
 
             { name: 'informationActivities', source: './models/information/static/activities.png', type: 'texture' },
 
@@ -222,6 +226,7 @@ export default class Resources extends EventEmitter
             // // Egg
             // { name: 'eggBase', source: './models/egg/base.glb' },
             // { name: 'eggCollision', source: './models/egg/collision.glb' },
+
         ])
 
         this.loader.on('fileEnd', (_resource, _data) =>

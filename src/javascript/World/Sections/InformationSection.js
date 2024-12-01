@@ -18,23 +18,23 @@ export default class InformationSection
         this.container = new THREE.Object3D()
         this.container.matrixAutoUpdate = false
 
-        this.setStatic()
+        // this.setStatic()
         this.setBaguettes()
         this.setLinks()
-        this.setActivities()
+        // this.setActivities()
         this.setTiles()
     }
 
-    setStatic()
-    {
-        this.objects.add({
-            base: this.resources.items.informationStaticBase.scene,
-            collision: this.resources.items.informationStaticCollision.scene,
-            floorShadowTexture: this.resources.items.informationStaticFloorShadowTexture,
-            offset: new THREE.Vector3(this.x, this.y, 0),
-            mass: 0
-        })
-    }
+    // setStatic()
+    // {
+    //     this.objects.add({
+    //         base: this.resources.items.informationStaticBase.scene,
+    //         collision: this.resources.items.informationStaticCollision.scene,
+    //         floorShadowTexture: this.resources.items.informationStaticFloorShadowTexture,
+    //         offset: new THREE.Vector3(this.x, this.y, 0),
+    //         mass: 0
+    //     })
+    // }
 
     setBaguettes()
     {
@@ -72,11 +72,11 @@ export default class InformationSection
         // Set up
         this.links = {}
         this.links.x = 1.95
-        this.links.y = - 1.5
+        this.links.y = 10
         this.links.halfExtents = {}
         this.links.halfExtents.x = 1
         this.links.halfExtents.y = 1
-        this.links.distanceBetween = 2.4
+        this.links.distanceBetween = 3.2
         this.links.labelWidth = this.links.halfExtents.x * 2 + 1
         this.links.labelGeometry = new THREE.PlaneGeometry(this.links.labelWidth, this.links.labelWidth * 0.25, 1, 1)
         this.links.labelOffset = - 1.6
@@ -91,14 +91,6 @@ export default class InformationSection
             {
                 href: 'https://twitter.com/bruno_simon/',
                 labelTexture: this.resources.items.informationContactTwitterLabelTexture
-            },
-            {
-                href: 'https://github.com/brunosimon/',
-                labelTexture: this.resources.items.informationContactGithubLabelTexture
-            },
-            {
-                href: 'https://www.linkedin.com/in/simonbruno77/',
-                labelTexture: this.resources.items.informationContactLinkedinLabelTexture
             },
             {
                 href: 'mailto:simon.bruno.77@gmail.com',
@@ -146,33 +138,33 @@ export default class InformationSection
         }
     }
 
-    setActivities()
-    {
-        // Set up
-        this.activities = {}
-        this.activities.x = this.x + 0
-        this.activities.y = this.y - 10
-        this.activities.multiplier = 5.5
+    // setActivities()
+    // {
+    //     // Set up
+    //     this.activities = {}
+    //     this.activities.x = this.x + 0
+    //     this.activities.y = this.y - 10
+    //     this.activities.multiplier = 5.5
 
-        // Geometry
-        this.activities.geometry = new THREE.PlaneGeometry(2 * this.activities.multiplier, 1 * this.activities.multiplier, 1, 1)
+    //     // Geometry
+    //     this.activities.geometry = new THREE.PlaneGeometry(2 * this.activities.multiplier, 1 * this.activities.multiplier, 1, 1)
 
-        // Texture
-        this.activities.texture = this.resources.items.informationActivitiesTexture
-        this.activities.texture.magFilter = THREE.NearestFilter
-        this.activities.texture.minFilter = THREE.LinearFilter
+    //     // Texture
+    //     this.activities.texture = this.resources.items.informationActivitiesTexture
+    //     this.activities.texture.magFilter = THREE.NearestFilter
+    //     this.activities.texture.minFilter = THREE.LinearFilter
 
-        // Material
-        this.activities.material = new THREE.MeshBasicMaterial({ wireframe: false, color: 0xffffff, alphaMap: this.activities.texture, transparent: true })
+    //     // Material
+    //     this.activities.material = new THREE.MeshBasicMaterial({ wireframe: false, color: 0xffffff, alphaMap: this.activities.texture, transparent: true })
 
-        // Mesh
-        this.activities.mesh = new THREE.Mesh(this.activities.geometry, this.activities.material)
-        this.activities.mesh.position.x = this.activities.x
-        this.activities.mesh.position.y = this.activities.y
-        this.activities.mesh.matrixAutoUpdate = false
-        this.activities.mesh.updateMatrix()
-        this.container.add(this.activities.mesh)
-    }
+    //     // Mesh
+    //     this.activities.mesh = new THREE.Mesh(this.activities.geometry, this.activities.material)
+    //     this.activities.mesh.position.x = this.activities.x
+    //     this.activities.mesh.position.y = this.activities.y
+    //     this.activities.mesh.matrixAutoUpdate = false
+    //     this.activities.mesh.updateMatrix()
+    //     this.container.add(this.activities.mesh)
+    // }
 
     setTiles()
     {

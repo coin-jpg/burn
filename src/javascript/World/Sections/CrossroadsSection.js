@@ -18,7 +18,7 @@ export default class CrossroadsSection
         this.container = new THREE.Object3D()
         this.container.matrixAutoUpdate = false
 
-        this.setStatic()
+        //this.setStatic()
         this.setTiles()
     }
 
@@ -41,16 +41,16 @@ export default class CrossroadsSection
             delta: new THREE.Vector2(0, this.y + 14)
         })
 
-        // To projects
-        this.tiles.add({
-            start: new THREE.Vector2(this.x + 12.5, this.y),
-            delta: new THREE.Vector2(7.5, 0)
-        })
+        // // To projects
+        // this.tiles.add({
+        //     start: new THREE.Vector2(this.x + 12.5, this.y),
+        //     delta: new THREE.Vector2(7.5, 0)
+        // })
 
-        // To projects
-        this.tiles.add({
-            start: new THREE.Vector2(this.x - 13, this.y),
-            delta: new THREE.Vector2(- 6, 0)
-        })
+        // // To projects
+        // this.tiles.add({
+        //     start: new THREE.Vector2(this.x - 13, this.y),
+        //     delta: new THREE.Vector2(- 6, 0)
+        // })
     }
 }

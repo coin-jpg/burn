@@ -464,15 +464,15 @@ export default class World
         })
         this.container.add(this.sections.crossroads.container)
 
-        // Projects
-        this.sections.projects = new ProjectsSection({
-            ...options,
-            x: 30,
-            y: - 30
-            // x: 0,
-            // y: 0
-        })
-        this.container.add(this.sections.projects.container)
+        // // Projects
+        // this.sections.projects = new ProjectsSection({
+        //     ...options,
+        //     x: 30,
+        //     y: - 30
+        //     // x: 0,
+        //     // y: 0
+        // })
+        // this.container.add(this.sections.projects.container)
 
         // Information
         this.sections.information = new InformationSection({
