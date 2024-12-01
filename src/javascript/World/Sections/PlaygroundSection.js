@@ -14,6 +14,7 @@ export default class PlaygroundSection
         this.debug = _options.debug
         this.x = _options.x
         this.y = _options.y
+        this.materials = _options.materials
 
         // Debug
         if(this.debug)
@@ -42,6 +43,12 @@ export default class PlaygroundSection
             floorShadowTexture: this.resources.items.playgroundStaticFloorShadowTexture,
             offset: new THREE.Vector3(this.x, this.y, 0),
             mass: 0
+        })
+
+        // Add tiles to connect with intro section
+        this.tiles.add({
+            start: new THREE.Vector2(this.x, -10),
+            delta: new THREE.Vector2(0, this.y + 14)
         })
     }
 
@@ -108,6 +115,37 @@ export default class PlaygroundSection
                 }
             })
         )
+
+        // Add guiding walls along the path from intro
+        this.walls.add({
+            object: this.brickWalls.brickOptions,
+            shape: {
+                type: 'brick',
+                equilibrateLastLine: true,
+                widthCount: 2,
+                heightCount: 3,
+                position: new THREE.Vector3(this.x - 2, -10, 0),
+                offsetWidth: new THREE.Vector3(0, -1.05, 0),
+                offsetHeight: new THREE.Vector3(0, 0, 0.45),
+                randomOffset: new THREE.Vector3(0, 0, 0),
+                randomRotation: new THREE.Vector3(0, 0, 0.2)
+            }
+        })
+
+        this.walls.add({
+            object: this.brickWalls.brickOptions,
+            shape: {
+                type: 'brick',
+                equilibrateLastLine: true,
+                widthCount: 2,
+                heightCount: 3,
+                position: new THREE.Vector3(this.x + 2, -10, 0),
+                offsetWidth: new THREE.Vector3(0, -1.05, 0),
+                offsetHeight: new THREE.Vector3(0, 0, 0.45),
+                randomOffset: new THREE.Vector3(0, 0, 0),
+                randomRotation: new THREE.Vector3(0, 0, 0.2)
+            }
+        })
 
         // Reset
         this.brickWalls.reset = () =>
@@ -227,3 +265,5 @@ export default class PlaygroundSection
         }
     }
 }
+
+

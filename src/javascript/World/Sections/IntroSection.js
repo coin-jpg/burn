@@ -246,10 +246,13 @@ export default class IntroSection
 
     setTiles()
     {
-        this.tiles.add({
-            start: new THREE.Vector2(0, - 4.5),
-            delta: new THREE.Vector2(0, - 4.5)
-        })
+        // Store the tile configuration for use in setDikes
+        this.tilesConfig = {
+            start: new THREE.Vector2(0, -4.5),
+            delta: new THREE.Vector2(0, -4.5)
+        }
+        
+        this.tiles.add(this.tilesConfig)
     }
 
     setDikes()
@@ -266,6 +269,38 @@ export default class IntroSection
             soundName: 'brick'
         }
 
+        // Add walls along the tiles path
+        // Left wall
+        this.walls.add({
+            object: this.dikes.brickOptions,
+            shape: {
+                type: 'brick',
+                equilibrateLastLine: true,
+                widthCount: 2,
+                heightCount: 3,
+                position: new THREE.Vector3(this.x - 2, this.tilesConfig.start.y, 0),
+                offsetWidth: new THREE.Vector3(0, -1.05, 0),
+                offsetHeight: new THREE.Vector3(0, 0, 0.45),
+                randomOffset: new THREE.Vector3(0, 0, 0),
+                randomRotation: new THREE.Vector3(0, 0, 0.2)
+            }
+        })
+
+        // Right wall
+        this.walls.add({
+            object: this.dikes.brickOptions,
+            shape: {
+                type: 'brick',
+                equilibrateLastLine: true,
+                widthCount: 2,
+                heightCount: 3,
+                position: new THREE.Vector3(this.x + 2, this.tilesConfig.start.y, 0),
+                offsetWidth: new THREE.Vector3(0, -1.05, 0),
+                offsetHeight: new THREE.Vector3(0, 0, 0.45),
+                randomOffset: new THREE.Vector3(0, 0, 0),
+                randomRotation: new THREE.Vector3(0, 0, 0.2)
+            }
+        })
 
         this.walls.add({
             object: this.dikes.brickOptions,
@@ -273,7 +308,7 @@ export default class IntroSection
             {
                 type: 'brick',
                 equilibrateLastLine: true,
-                widthCount: 5,
+                widthCount: 3,
                 heightCount: 2,
                 position: new THREE.Vector3(this.x - 12, this.y - 13, 0),
                 offsetWidth: new THREE.Vector3(0, 1.05, 0),

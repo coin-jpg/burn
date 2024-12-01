@@ -11,7 +11,6 @@ import Tiles from './Tiles.js'
 import Walls from './Walls.js'
 import IntroSection from './Sections/IntroSection.js'
 import ProjectsSection from './Sections/ProjectsSection.js'
-import CrossroadsSection from './Sections/CrossroadsSection.js'
 import InformationSection from './Sections/InformationSection.js'
 import PlaygroundSection from './Sections/PlaygroundSection.js'
 // import DistinctionASection from './Sections/DistinctionASection.js'
@@ -456,13 +455,13 @@ export default class World
         })
         this.container.add(this.sections.intro.container)
 
-        // Crossroads
-        this.sections.crossroads = new CrossroadsSection({
+        // Playground
+        this.sections.playground = new PlaygroundSection({
             ...options,
             x: 0,
-            y: - 30
+            y: -30
         })
-        this.container.add(this.sections.crossroads.container)
+        this.container.add(this.sections.playground.container)
 
         // // Projects
         // this.sections.projects = new ProjectsSection({
@@ -483,16 +482,6 @@ export default class World
             // y: - 10
         })
         this.container.add(this.sections.information.container)
-
-        // Playground
-        this.sections.playground = new PlaygroundSection({
-            ...options,
-            x: - 38,
-            y: - 34
-            // x: - 15,
-            // y: - 4
-        })
-        this.container.add(this.sections.playground.container)
     }
 
     setEasterEggs()
