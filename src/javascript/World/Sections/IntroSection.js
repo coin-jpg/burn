@@ -24,6 +24,7 @@ export default class IntroSection
         //this.setStatic()
         this.setInstructions()
         this.setCustomText()
+        this.setAnotherCustomText()
         this.setOtherInstructions()
         this.setTitles()
         this.setTiles()
@@ -113,8 +114,8 @@ export default class IntroSection
     setCustomText()
     {
         this.customText = {}
-        this.customText.x = 5
-        this.customText.y = -9
+        this.customText.x = -2
+        this.customText.y = 8
 
         // Container
         this.customText.container = new THREE.Object3D()
@@ -154,6 +155,49 @@ export default class IntroSection
         this.customText.container.add(this.customText.label.mesh)
     }
 
+    setAnotherCustomText()
+    {
+        this.anotherText = {}
+        this.anotherText.x = -2 // Adjust X position
+        this.anotherText.y = 5// Adjust Y position (lower than the first custom text)
+
+        // Container
+        this.anotherText.container = new THREE.Object3D()
+        this.anotherText.container.position.x = this.anotherText.x
+        this.anotherText.container.position.y = this.anotherText.y
+        this.anotherText.container.matrixAutoUpdate = false
+        this.anotherText.container.updateMatrix()
+        this.container.add(this.anotherText.container)
+
+        // Label
+        this.anotherText.label = {}
+
+        // Get the texture (you'll need to add this to Resources.js)
+        this.anotherText.label.texture = this.resources.items.mySecondCustomTextTextureTexture
+        this.anotherText.label.texture.magFilter = THREE.NearestFilter
+        this.anotherText.label.texture.minFilter = THREE.LinearFilter
+
+        // Use same size plane as other instructions
+        this.anotherText.label.geometry = new THREE.PlaneGeometry(8, 3)
+
+        // Create material
+        this.anotherText.label.material = new THREE.MeshBasicMaterial({ 
+            transparent: true, 
+            alphaMap: this.anotherText.label.texture,
+            color: 0xffffff, 
+            depthWrite: false,
+            opacity: 1
+        })
+
+        // Create mesh
+        this.anotherText.label.mesh = new THREE.Mesh(
+            this.anotherText.label.geometry, 
+            this.anotherText.label.material
+        )
+        this.anotherText.label.mesh.matrixAutoUpdate = false
+        this.anotherText.container.add(this.anotherText.label.mesh)
+    }
+
     setOtherInstructions()
     {
         if(this.config.touch)
@@ -162,7 +206,7 @@ export default class IntroSection
         }
 
         this.otherInstructions = {}
-        this.otherInstructions.x = 16
+        this.otherInstructions.x = -8
         this.otherInstructions.y = - 2
 
         // Container

@@ -20,7 +20,7 @@ export default class ThreejsJourney
         this.seenCount = parseInt(this.seenCount)
         this.shown = false
         this.traveledDistance = 0
-        this.minTraveledDistance = (this.config.debug ? 5 : 75) * (this.seenCount + 1)
+        this.minTraveledDistance = 0
         this.prevent = !!window.localStorage.getItem('threejsJourneyPrevent')
 
         if(this.config.debug)

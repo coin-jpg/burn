@@ -458,7 +458,7 @@ export default class World
         // Playground
         this.sections.playground = new PlaygroundSection({
             ...options,
-            x: 0,
+            x: -25,
             y: -30
         })
         this.container.add(this.sections.playground.container)
@@ -477,7 +477,7 @@ export default class World
         this.sections.information = new InformationSection({
             ...options,
             x: 1.2,
-            y: - 55
+            y: -30
             // x: 0,
             // y: - 10
         })

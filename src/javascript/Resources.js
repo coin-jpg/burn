@@ -39,6 +39,7 @@ export default class Resources extends EventEmitter
             { name: 'introInstructionsControls', source: './models/intro/instructions/controls.png', type: 'texture' },
             { name: 'introInstructionsOther', source: './models/intro/instructions/other.png', type: 'texture' },
             { name: 'myCustomTextTexture', source: './models/intro/instructions/address.png', type: 'texture' },
+            { name: 'mySecondCustomTextTexture', source: './models/intro/instructions/CA.png', type: 'texture' },
 
             { name: 'introArrowKeyBase', source: './models/intro/arrowKey/base.glb' },
             { name: 'introArrowKeyCollision', source: './models/intro/arrowKey/collision.glb' },

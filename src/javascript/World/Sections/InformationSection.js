@@ -46,7 +46,7 @@ export default class InformationSection
         this.baguettes.a = this.objects.add({
             base: this.resources.items.informationBaguetteBase.scene,
             collision: this.resources.items.informationBaguetteCollision.scene,
-            offset: new THREE.Vector3(this.x + this.baguettes.x - 0.56, this.y + this.baguettes.y - 0.666, 0.2),
+            offset: new THREE.Vector3(this.x + this.baguettes.x + 10, this.y + this.baguettes.y - 0.666, 0.2),
             rotation: new THREE.Euler(0, 0, - Math.PI * 37 / 180),
             duplicated: true,
             shadow: { sizeX: 0.6, sizeY: 3.5, offsetZ: - 0.15, alpha: 0.35 },
@@ -72,7 +72,7 @@ export default class InformationSection
         // Set up
         this.links = {}
         this.links.x = 1.95
-        this.links.y = 10
+        this.links.y = 15
         this.links.halfExtents = {}
         this.links.halfExtents.x = 1
         this.links.halfExtents.y = 1
@@ -169,7 +169,7 @@ export default class InformationSection
     setTiles()
     {
         this.tiles.add({
-            start: new THREE.Vector2(this.x - 1.2, this.y + 13),
+            start: new THREE.Vector2(this.x - 1.2, this.y + 30),
             delta: new THREE.Vector2(0, - 20)
         })
     }
