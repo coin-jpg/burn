@@ -24,7 +24,6 @@ export default class IntroSection
         //this.setStatic()
         this.setInstructions()
         this.setCustomText()
-        this.setAnotherCustomText()
         this.setOtherInstructions()
         this.setTitles()
         this.setTiles()
@@ -45,15 +44,17 @@ export default class IntroSection
     setInstructions()
     {
         this.instructions = {}
+        
+        // Add a base offset to move everything right
+        const rightOffset = 2  // Increase this value to move further right
 
         /**
          * Arrows
          */
         this.instructions.arrows = {}
-
-        // Label
         this.instructions.arrows.label = {}
 
+        // Label
         this.instructions.arrows.label.texture = this.config.touch ? this.resources.items.introInstructionsControlsTexture : this.resources.items.introInstructionsArrowsTexture
         this.instructions.arrows.label.texture.magFilter = THREE.NearestFilter
         this.instructions.arrows.label.texture.minFilter = THREE.LinearFilter
@@ -63,6 +64,7 @@ export default class IntroSection
         this.instructions.arrows.label.geometry = this.resources.items.introInstructionsLabels.scene.children.find((_mesh) => _mesh.name === 'arrows').geometry
 
         this.instructions.arrows.label.mesh = new THREE.Mesh(this.instructions.arrows.label.geometry, this.instructions.arrows.label.material)
+        this.instructions.arrows.label.mesh.position.x += rightOffset  // Move label right
         this.container.add(this.instructions.arrows.label.mesh)
 
         if(!this.config.touch)
@@ -71,7 +73,7 @@ export default class IntroSection
             this.instructions.arrows.up = this.objects.add({
                 base: this.resources.items.introArrowKeyBase.scene,
                 collision: this.resources.items.introArrowKeyCollision.scene,
-                offset: new THREE.Vector3(0, 0, 0),
+                offset: new THREE.Vector3(rightOffset, 0, 0),  // Added rightOffset
                 rotation: new THREE.Euler(0, 0, 0),
                 duplicated: true,
                 shadow: { sizeX: 1, sizeY: 1, offsetZ: - 0.2, alpha: 0.5 },
@@ -81,7 +83,7 @@ export default class IntroSection
             this.instructions.arrows.down = this.objects.add({
                 base: this.resources.items.introArrowKeyBase.scene,
                 collision: this.resources.items.introArrowKeyCollision.scene,
-                offset: new THREE.Vector3(0, - 0.8, 0),
+                offset: new THREE.Vector3(rightOffset, - 0.8, 0),  // Added rightOffset
                 rotation: new THREE.Euler(0, 0, Math.PI),
                 duplicated: true,
                 shadow: { sizeX: 1, sizeY: 1, offsetZ: - 0.2, alpha: 0.5 },
@@ -91,7 +93,7 @@ export default class IntroSection
             this.instructions.arrows.left = this.objects.add({
                 base: this.resources.items.introArrowKeyBase.scene,
                 collision: this.resources.items.introArrowKeyCollision.scene,
-                offset: new THREE.Vector3(- 0.8, - 0.8, 0),
+                offset: new THREE.Vector3(rightOffset - 0.8, - 0.8, 0),  // Added rightOffset
                 rotation: new THREE.Euler(0, 0, Math.PI * 0.5),
                 duplicated: true,
                 shadow: { sizeX: 1, sizeY: 1, offsetZ: - 0.2, alpha: 0.5 },
@@ -101,7 +103,7 @@ export default class IntroSection
             this.instructions.arrows.right = this.objects.add({
                 base: this.resources.items.introArrowKeyBase.scene,
                 collision: this.resources.items.introArrowKeyCollision.scene,
-                offset: new THREE.Vector3(0.8, - 0.8, 0),
+                offset: new THREE.Vector3(rightOffset + 0.8, - 0.8, 0),  // Added rightOffset
                 rotation: new THREE.Euler(0, 0, - Math.PI * 0.5),
                 duplicated: true,
                 shadow: { sizeX: 1, sizeY: 1, offsetZ: - 0.2, alpha: 0.5 },
@@ -153,49 +155,6 @@ export default class IntroSection
         )
         this.customText.label.mesh.matrixAutoUpdate = false
         this.customText.container.add(this.customText.label.mesh)
-    }
-
-    setAnotherCustomText()
-    {
-        this.anotherText = {}
-        this.anotherText.x = -2 // Adjust X position
-        this.anotherText.y = 5// Adjust Y position (lower than the first custom text)
-
-        // Container
-        this.anotherText.container = new THREE.Object3D()
-        this.anotherText.container.position.x = this.anotherText.x
-        this.anotherText.container.position.y = this.anotherText.y
-        this.anotherText.container.matrixAutoUpdate = false
-        this.anotherText.container.updateMatrix()
-        this.container.add(this.anotherText.container)
-
-        // Label
-        this.anotherText.label = {}
-
-        // Get the texture (you'll need to add this to Resources.js)
-        this.anotherText.label.texture = this.resources.items.mySecondCustomTextTextureTexture
-        this.anotherText.label.texture.magFilter = THREE.NearestFilter
-        this.anotherText.label.texture.minFilter = THREE.LinearFilter
-
-        // Use same size plane as other instructions
-        this.anotherText.label.geometry = new THREE.PlaneGeometry(8, 3)
-
-        // Create material
-        this.anotherText.label.material = new THREE.MeshBasicMaterial({ 
-            transparent: true, 
-            alphaMap: this.anotherText.label.texture,
-            color: 0xffffff, 
-            depthWrite: false,
-            opacity: 1
-        })
-
-        // Create mesh
-        this.anotherText.label.mesh = new THREE.Mesh(
-            this.anotherText.label.geometry, 
-            this.anotherText.label.material
-        )
-        this.anotherText.label.mesh.matrixAutoUpdate = false
-        this.anotherText.container.add(this.anotherText.label.mesh)
     }
 
     setOtherInstructions()
