@@ -93,7 +93,7 @@ export default class InformationSection
                 labelTexture: this.resources.items.informationContactTwitterLabelTexture
             },
             {
-                href: 'mailto:simon.bruno.77@gmail.com',
+                href: 'https://t.me/x_burnn',
                 labelTexture: this.resources.items.informationContactMailLabelTexture
             }
         ]
